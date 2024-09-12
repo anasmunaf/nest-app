@@ -15,13 +15,15 @@ export class EmployeesService {
   }
 
   async findAll(role?: Prisma.UserCreateInput['role']) {
-    return this.userDB.findMany({
+    const data = this.userDB.findMany({
       where: {
         role: {
           equals: role,
         },
       },
     });
+
+    return data;
   }
 
   async findOne(id: number) {
