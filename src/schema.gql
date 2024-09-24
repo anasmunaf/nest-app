@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Company {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateCompanyInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Mutation {
+  createCompany(createCompanyInput: CreateCompanyInput!): Company!
+  removeCompany(id: Int!): Company!
+  updateCompany(updateCompanyInput: UpdateCompanyInput!): Company!
+}
+
+type Query {
+  companies: [Company!]!
+  company(id: Int!): Company!
+}
+
+input UpdateCompanyInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}

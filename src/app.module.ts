@@ -7,6 +7,10 @@ import { EmployeesModule } from './employees/employees.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { AppLoggerModule } from './app-logger/app-logger.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
+import { CompaniesModule } from './companies/companies.module';
 
 const throttlerModule = ThrottlerModule.forRoot([
   {
@@ -33,6 +37,12 @@ const throttleProvider = {
     EmployeesModule,
     throttlerModule,
     AppLoggerModule,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      sortSchema: true,
+    }),
+    CompaniesModule,
   ],
   controllers: [AppController],
   providers: [AppService, throttleProvider],
